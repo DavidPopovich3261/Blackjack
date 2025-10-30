@@ -1,4 +1,4 @@
-
+import random
 
 
 def build_standard_deck() -> list[dict]:
@@ -12,4 +12,43 @@ def build_standard_deck() -> list[dict]:
     return deck
 
 def shuffle_by_suit(deck: list[dict], swaps: int = 5000) -> list[dict]:
-    pass
+    for i in range(swaps):
+        rng=random.randint(0,52)
+        card=deck[rng]
+        flag=False
+        while flag:
+            rng2=random.randint(0,52)
+            d={'h':5,'c':3,'d':2,'s':7}
+            if rng2 != rng:
+                for x ,y in d.items() :
+                    if card['suite']=='x':
+                        if rng2 %y==0:
+                            card2=deck[rng2]
+                            flag=True
+        deck[rng],deck[rng2]=deck[rng2],deck[rng]
+    return deck
+
+                        # else:
+                        #     continue
+            #     if card['suite']=='c':
+            #         if rng2 %3==0:
+            #             card2=deck[rng2]
+            #             flag=True
+            #         else:
+            #             continue
+            #     if card['suite']=='d':
+            #         if rng2 %2==0:
+            #             card2=deck[rng2]
+            #             flag=True
+            #         else:
+            #             continue
+            #     if card['suite']=='s':
+            #         if rng2 %7==0:
+            #             card2=deck[rng2]
+            #             flag=True
+            #         else:
+            #             continue
+            # else:
+            #     continue
+
+
