@@ -3,7 +3,7 @@ import random
 
 def build_standard_deck() -> list[dict]:
     rank=["a","2",'3','4','5','6','7','8','9','10','j','q','k']
-    suite=["h",'c','d','s']
+    suite=['h','c','d','s']
     deck = []
     for i in rank:
         for j in suite:
@@ -13,42 +13,20 @@ def build_standard_deck() -> list[dict]:
 
 def shuffle_by_suit(deck: list[dict], swaps: int = 5000) -> list[dict]:
     for i in range(swaps):
-        rng=random.randint(0,52)
+        rng=random.randint(0,51)
         card=deck[rng]
         flag=False
-        while flag:
-            rng2=random.randint(0,52)
+        while not flag:
+            rng2=random.randint(0,51)
             d={'h':5,'c':3,'d':2,'s':7}
             if rng2 != rng:
                 for x ,y in d.items() :
-                    if card['suite']=='x':
-                        if rng2 %y==0:
-                            card2=deck[rng2]
+                    if card['suite']==x:
+                        if rng2 % y==0:
                             flag=True
         deck[rng],deck[rng2]=deck[rng2],deck[rng]
     return deck
 
-                        # else:
-                        #     continue
-            #     if card['suite']=='c':
-            #         if rng2 %3==0:
-            #             card2=deck[rng2]
-            #             flag=True
-            #         else:
-            #             continue
-            #     if card['suite']=='d':
-            #         if rng2 %2==0:
-            #             card2=deck[rng2]
-            #             flag=True
-            #         else:
-            #             continue
-            #     if card['suite']=='s':
-            #         if rng2 %7==0:
-            #             card2=deck[rng2]
-            #             flag=True
-            #         else:
-            #             continue
-            # else:
-            #     continue
+
 
 
